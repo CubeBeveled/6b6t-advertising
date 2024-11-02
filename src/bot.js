@@ -98,12 +98,19 @@ class bot {
       }
     });
 
-    if (this.config.botOptions.sendServerMessagesInConsole && !loggingMsgs) {
-      loggingMsgs = true;
-      this.bot.on("message", (msg) => {
-        console.log(msg.toAnsi());
-      });
-    }
+    this.bot.on("message", (msg) => {
+      const ansi = msg.toAnsi();
+      msg = msg.toString();
+
+      if (this.config.botOptions.sendServerMessagesInConsole && !loggingMsgs) {
+        console.log(ansi);
+        loggingMsgs = true;
+      }
+
+      if (msg.includes("/login")) {
+        this.bot.chat(`/login ${this.config.botOptions.password}`);
+      }
+    });
   }
 
   async movementLoop() {
