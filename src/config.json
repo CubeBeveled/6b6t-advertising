@@ -1,0 +1,28 @@
+{
+  "botCount": 1,
+  "advertising": {
+    "messages": [
+      "Join dsc_gg| yourclan for cookies",
+      "Kits gratis → dsc!gg yourclan"
+    ],
+    "messagePattern": ".msg .rand",
+    "randomStringLength": 5,
+    "sendMessagesInRandomOrder": true,
+
+    "messageDelay": 5000,
+    "randomMessageDelay": true,
+    "maxRandomMessageDelay": 10000,
+
+    "whisperMessages": true,
+    "sendMessagesInChat": false,
+
+    "randomPlayerOrder": true
+  },
+  "botOptions": {
+    "username": "yo bot username",
+    "password": "yo password",
+    "reconnectDelay": 5500,
+    "viewDistance": "tiny",
+    "sendServerMessagesInConsole": false
+  }
+}
