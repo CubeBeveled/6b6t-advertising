@@ -17,7 +17,7 @@ function randomString(length) {
   let randomString = "";
 
   for (let i = 0; i < length; i++) {
-    const randomIndex = randomInt(alphabet.length);
+    const randomIndex = randomInt(0, alphabet.length);
     randomString += alphabet.charAt(randomIndex);
   }
 
@@ -119,35 +119,35 @@ class bot {
 
     if (getRandomBoolean()) {
       this.bot.setControlState("jump", true)
-      await sleep(randomInt(maxMotionDelay))
+      await sleep(randomInt(10, maxMotionDelay))
       this.bot.setControlState("jump", false)
     }
 
     if (getRandomBoolean()) {
       this.bot.setControlState("forward", true)
-      await sleep(randomInt(maxMotionDelay))
+      await sleep(randomInt(10, maxMotionDelay))
       this.bot.setControlState("forward", false)
     }
 
     if (getRandomBoolean()) {
       this.bot.setControlState("back", true)
-      await sleep(randomInt(maxMotionDelay))
+      await sleep(randomInt(10, maxMotionDelay))
       this.bot.setControlState("back", false)
     }
 
     if (getRandomBoolean()) {
       this.bot.setControlState("left", true)
-      await sleep(randomInt(maxMotionDelay))
+      await sleep(randomInt(10, maxMotionDelay))
       this.bot.setControlState("left", false)
     }
 
     if (getRandomBoolean()) {
       this.bot.setControlState("right", true)
-      await sleep(randomInt(maxMotionDelay))
+      await sleep(randomInt(10, maxMotionDelay))
       this.bot.setControlState("right", false)
     }
 
-    await this.bot.look(randomInt(180), randomInt(360));
+    this.bot.look(randomInt(-180, 180), randomInt(-360, 360));
 
     await sleep(100);
     this.movementLoop()
