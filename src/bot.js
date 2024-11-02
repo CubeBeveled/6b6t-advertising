@@ -50,19 +50,20 @@ class bot {
   }
 
   registerEvents() {
-    this.bot.on("error", (error) => {
+    this.bot.on("error", async (error) => {
       console.log(color.yellow(`[${this.botOptions.username}] Error: `) + error.message)
-      this.reconnect();
+      this.currentState = state.online;
+      await this.reconnect();
     });
 
-    this.bot.on("end", (reason) => {
+    this.bot.on("end", async (reason) => {
       console.log(color.yellow(`[${this.botOptions.username}] Connection ended: `) + reason);
-      this.reconnect()
     });
-
-    this.bot.on("kicked", (reason) => {
+    
+    this.bot.on("kicked", async (reason) => {
       console.log(color.yellow(`[${this.botOptions.username}] Kicked: `) + reason)
-      this.reconnect()
+      this.currentState = state.online;
+      await this.reconnect()
     });
 
     this.bot.on("death", () => {
@@ -102,13 +103,13 @@ class bot {
       const ansi = msg.toAnsi();
       msg = msg.toString();
 
-      if (this.config.botOptions.sendServerMessagesInConsole && !loggingMsgs) {
+      if (this.botOptions.sendServerMessagesInConsole && !loggingMsgs) {
         console.log(ansi);
         loggingMsgs = true;
       }
 
       if (msg.includes("/login")) {
-        this.bot.chat(`/login ${this.config.botOptions.password}`);
+        this.bot.chat(`/login ${this.botOptions.password}`);
       }
     });
   }
@@ -209,14 +210,14 @@ class bot {
     this.advertisementLoop()
   }
 
-  reconnect() {
+  async reconnect() {
     if (this.currentState !== state.online) return;
     this.currentState = state.reconnecting;
     if (this.bot) this.bot.end();
 
     this.spawned = 0;
-
-    this.bot = mineflayer.createBot(botOptions);
+    await sleep(this.botOptions.reconnectDelay)
+    this.bot = mineflayer.createBot(this.botOptions);
     this.registerEvents();
   }
 }

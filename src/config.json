@@ -1,5 +1,4 @@
 {
-  "botCount": 1,
   "advertising": {
     "messages": [
       "Join dsc_gg| yourclan for cookies",
@@ -18,11 +17,13 @@
 
     "randomPlayerOrder": true
   },
-  "botOptions": {
-    "username": "yo bot username",
-    "password": "yo password",
-    "reconnectDelay": 5500,
-    "viewDistance": "tiny",
-    "sendServerMessagesInConsole": false
-  }
+  "bots": [
+    {
+      "username": "yo bot username",
+      "password": "yo bot password",
+      "reconnectDelay": 5500,
+      "viewDistance": "tiny",
+      "sendServerMessagesInConsole": false
+    }
+  ]
 }

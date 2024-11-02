@@ -26,9 +26,6 @@ node index.js
 6. Profit
 
 # Configuration
-### botCount
-How many bots will join 6b6t
-
 ## advertising
 ### messages
 What messages to send.
@@ -63,7 +60,7 @@ If the bot should send the messages in normal chat.
 ### randomPlayerOrder
 If the messages should be sent to players in the order they appear in the tab list
 
-## botOptions
+## Bot object
 ### username
 The username that the bot will join with. If botCount is more than 1 a number will be added at the end of said username.
 
