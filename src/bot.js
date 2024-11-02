@@ -59,7 +59,7 @@ class bot {
     this.bot.on("end", async (reason) => {
       console.log(color.yellow(`[${this.botOptions.username}] Connection ended: `) + reason);
     });
-    
+
     this.bot.on("kicked", async (reason) => {
       console.log(color.yellow(`[${this.botOptions.username}] Kicked: `) + reason)
       this.currentState = state.online;
@@ -85,7 +85,7 @@ class bot {
 
         if (!sentPlayercount) {
           const players = Object.values(this.bot.players)
-            .filter((p) => p.username !== this.botOptions.username)
+          .filter((p) => p.username !== this.botOptions.username && !this.config.advertising.usernameBlacklist.includes(p.username))
             .map(player => player);
 
           console.log(color.green(players.length + " players online"));
@@ -175,7 +175,7 @@ class bot {
 
     if (this.config.advertising.whisperMessages) {
       const players = Object.values(this.bot.players)
-        .filter((p) => p.username !== this.botOptions.username)
+        .filter((p) => p.username !== this.botOptions.username && !this.config.advertising.usernameBlacklist.includes(p.username))
         .map(player => player);
 
       let username;

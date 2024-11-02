@@ -27,6 +27,9 @@ node index.js
 
 # Configuration
 ## advertising
+### usernameBlacklist
+Usernames in this list wont receive your advertisements
+
 ### messages
 What messages to send.
 
