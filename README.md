@@ -2,6 +2,29 @@
 A bot to advertise your stuff on 6b6t
 *Only works with offline authentication accounts (cracked accounts)*
 
+# Running the bot
+1. Making sure you have [nodejs](https://nodejs.org/en) 20 or later and [git](https://git-scm.com/) installed<br>
+You can do that by running the following from your console. (Both of the commands show the versions of nodejs and git, if they are installed)
+```sh
+node -v
+git -v
+```
+2. Download the git repository to your machine by running the following command in your console
+```sh
+git clone https://github.com/CubeBeveled/6b6t-advertising
+```
+3. Install the required packages<br>
+You can do that by running the following from your console.
+```sh
+npm i
+```
+4. Modify the `config.json` file found inside the `src` folder. More specifically, the [messages](https://github.com/CubeBeveled/6b6t-advertising?tab=readme-ov-file#messages), [username](https://github.com/CubeBeveled/6b6t-advertising?tab=readme-ov-file#username) and [password](https://github.com/CubeBeveled/6b6t-advertising?tab=readme-ov-file#username). If you want you can also change the other options.
+5. Run the following inside the src folder
+```sh
+node index.js
+```
+6. Profit
+
 # Configuration
 ### botCount
 How many bots will join 6b6t
