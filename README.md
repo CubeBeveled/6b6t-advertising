@@ -25,6 +25,7 @@ node index.js
 ```
 6. Profit
 
+*NOTE: console AKA command prompt if you are on windows*
 # Configuration
 ## advertising
 ### usernameBlacklist
