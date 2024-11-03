@@ -14,7 +14,7 @@ git -v
 git clone https://github.com/CubeBeveled/6b6t-advertising
 ```
 3. Install the required packages<br>
-You can do that by running the following from your console.
+You can do that by running the following inside the `src` folder from your console.
 ```sh
 npm i
 ```
