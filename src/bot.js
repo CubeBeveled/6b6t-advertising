@@ -85,7 +85,7 @@ class bot {
 
         if (!sentPlayercount) {
           const players = Object.values(this.bot.players)
-          .filter((p) => p.username !== this.botOptions.username && !this.config.advertising.usernameBlacklist.includes(p.username))
+            .filter((p) => p.username !== this.botOptions.username && !this.config.advertising.usernameBlacklist.includes(p.username))
             .map(player => player);
 
           console.log(color.green(players.length + " players online"));
@@ -197,9 +197,11 @@ class bot {
 
       this.bot.chat(`/msg ${username} ${message}`)
       console.log(color.green(`Sent ${color.gray(message)} to ${color.yellow(username)}`));
-      
-      if (this.config.advertising.randomMessageDelay) await sleep(randomInt(3500, this.config.advertising.maxRandomMessageDelay))
-      else await sleep(this.config.advertising.messageDelay)
+
+      if (this.config.advertising.sendMessagesInChat) {
+        if (this.config.advertising.randomMessageDelay) await sleep(randomInt(3500, this.config.advertising.maxRandomMessageDelay))
+        else await sleep(this.config.advertising.messageDelay)
+      }
     }
 
     if (this.config.advertising.sendMessagesInChat) {
