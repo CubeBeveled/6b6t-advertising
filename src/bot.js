@@ -197,6 +197,9 @@ class bot {
 
       this.bot.chat(`/msg ${username} ${message}`)
       console.log(color.green(`Sent ${color.gray(message)} to ${color.yellow(username)}`));
+      
+      if (this.config.advertising.randomMessageDelay) await sleep(randomInt(3500, this.config.advertising.maxRandomMessageDelay))
+      else await sleep(this.config.advertising.messageDelay)
     }
 
     if (this.config.advertising.sendMessagesInChat) {
