@@ -44,8 +44,10 @@ class bot {
 
     this.playerIndex = 0;
     this.messageIndex = 0;
-
+    
+    this.flaggedCount = 0;
     this.spawned = 0;
+
     this.currentState = state.offline;
   }
 
@@ -118,7 +120,8 @@ class bot {
       }
 
       if (msg.toLowerCase().startsWith("message was treated as spam")) {
-        console.log(color.yellow(color.bold(`[${this.botOptions.username} WARN] The previous message was flagged as spam`)))
+        this.flaggedCount++;
+        console.log(color.yellow(color.bold(`[${this.botOptions.username} WARN] The previous message was flagged as spam`), ` (${this.flaggedCount})`));
       }
     });
   }
