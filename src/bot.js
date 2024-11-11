@@ -111,6 +111,15 @@ class bot {
       if (msg.includes("/login")) {
         this.bot.chat(`/login ${this.botOptions.password}`);
       }
+
+      if (msg.includes("/register") && this.spawned == 1) {
+        console.log(color.red(`Username ${color.bold(this.botOptions.username)} has not been registered or is wrong`));
+        process.exit("USR_NOT_REG");
+      }
+
+      if (msg.toLowerCase().startsWith("message was treated as spam")) {
+        console.log(color.yellow(color.bold(`[WARN] The previous message was flagged as spam`)))
+      }
     });
   }
 
