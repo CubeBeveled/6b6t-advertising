@@ -118,7 +118,7 @@ class bot {
       }
 
       if (msg.toLowerCase().startsWith("message was treated as spam")) {
-        console.log(color.yellow(color.bold(`[WARN] The previous message was flagged as spam`)))
+        console.log(color.yellow(color.bold(`[${this.botOptions.username} WARN] The previous message was flagged as spam`)))
       }
     });
   }
@@ -180,7 +180,9 @@ class bot {
       }
     }
 
-    message = this.config.advertising.messagePattern.replace(".msg", message).replace(".rand", randomString(this.config.advertising.randomStringLength))
+    message = this.config.advertising.messagePattern
+      .replace(".msg", message)
+      .replace(".rand", randomString(this.config.advertising.randomStringLength))
 
     if (this.config.advertising.whisperMessages) {
       const players = Object.values(this.bot.players)
