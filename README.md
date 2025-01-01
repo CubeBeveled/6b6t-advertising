@@ -1,5 +1,5 @@
 # 6b6t advertiser
-A bot to advertise your stuff on 6b6t
+A bot to advertise your stuff on 6b6t<br>
 *Only works with offline authentication accounts (cracked accounts)*
 
 # Running the bot
