@@ -9,7 +9,7 @@ for (const b of config.bots) {
     version: "1.20", // Version that the bot will use
     viewDistance: b.viewDistance, // Info in README.md
     password: b.password, // Info in README.md
-    sendServerMessagesInConsole: b.sendServerMessagesInConsole, // Info in README.md
+    sendChatMessagesInConsole: b.sendChatMessagesInConsole, // Info in README.md
     reconnectDelay: b.reconnectDelay, // Info in README.md
     auth: "offline", // Use cracked accounts
     checkTimeoutInterval: 60000, // After how much time of the server not responding the bot should be considered timed out

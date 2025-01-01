@@ -81,6 +81,6 @@ The render distance of the bot. Input options for this value can be read [here](
 
 *For developers* heres the [Mineflayer API documentation](https://github.com/PrismarineJS/mineflayer/blob/master/docs/api.md)
 
-### sendServerMessagesInConsole
+### sendChatMessagesInConsole
 If a bot should send server messages in console
 ___

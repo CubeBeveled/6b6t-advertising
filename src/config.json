@@ -26,7 +26,7 @@
       "password": "yo bot password",
       "reconnectDelay": 5500,
       "viewDistance": "tiny",
-      "sendServerMessagesInConsole": false
+      "sendChatMessagesInConsole": false
     }
   ]
 }

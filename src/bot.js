@@ -31,7 +31,7 @@ const state = {
   dead: "dead"
 }
 
-// These are here so every bot doesnt sent playercount and messages and spam the console
+// These are here so every bot doesnt send playercount and messages and spam the console
 let loggingMsgs = false;
 let sentPlayercount = false;
 
@@ -44,7 +44,7 @@ class bot {
 
     this.playerIndex = 0;
     this.messageIndex = 0;
-    
+
     this.flaggedCount = 0;
     this.spawned = 0;
 
@@ -88,7 +88,6 @@ class bot {
         if (!sentPlayercount) {
           const players = Object.values(this.bot.players)
             .filter((p) => p.username !== this.botOptions.username && !this.config.advertising.usernameBlacklist.includes(p.username))
-            .map(player => player);
 
           console.log(color.green(players.length + " players online"));
           sentPlayercount = true;
@@ -105,7 +104,7 @@ class bot {
       const ansi = msg.toAnsi();
       msg = msg.toString();
 
-      if (this.botOptions.sendServerMessagesInConsole && !loggingMsgs) {
+      if (this.botOptions.sendChatMessagesInConsole && !loggingMsgs) {
         console.log(ansi);
         loggingMsgs = true;
       }
@@ -127,43 +126,42 @@ class bot {
   }
 
   async movementLoop() {
-    if (this.currentState !== state.online) return;
     const maxMotionDelay = 2000;
+    while (this.currentState !== state.online) {
+      if (getRandomBoolean()) {
+        this.bot.setControlState("jump", true)
+        await sleep(randomInt(10, maxMotionDelay))
+        this.bot.setControlState("jump", false)
+      }
 
-    if (getRandomBoolean()) {
-      this.bot.setControlState("jump", true)
-      await sleep(randomInt(10, maxMotionDelay))
-      this.bot.setControlState("jump", false)
+      if (getRandomBoolean()) {
+        this.bot.setControlState("forward", true)
+        await sleep(randomInt(10, maxMotionDelay))
+        this.bot.setControlState("forward", false)
+      }
+
+      if (getRandomBoolean()) {
+        this.bot.setControlState("back", true)
+        await sleep(randomInt(10, maxMotionDelay))
+        this.bot.setControlState("back", false)
+      }
+
+      if (getRandomBoolean()) {
+        this.bot.setControlState("left", true)
+        await sleep(randomInt(10, maxMotionDelay))
+        this.bot.setControlState("left", false)
+      }
+
+      if (getRandomBoolean()) {
+        this.bot.setControlState("right", true)
+        await sleep(randomInt(10, maxMotionDelay))
+        this.bot.setControlState("right", false)
+      }
+
+      this.bot.look(randomInt(-180, 180), randomInt(-360, 360));
+
+      await sleep(100);
     }
-
-    if (getRandomBoolean()) {
-      this.bot.setControlState("forward", true)
-      await sleep(randomInt(10, maxMotionDelay))
-      this.bot.setControlState("forward", false)
-    }
-
-    if (getRandomBoolean()) {
-      this.bot.setControlState("back", true)
-      await sleep(randomInt(10, maxMotionDelay))
-      this.bot.setControlState("back", false)
-    }
-
-    if (getRandomBoolean()) {
-      this.bot.setControlState("left", true)
-      await sleep(randomInt(10, maxMotionDelay))
-      this.bot.setControlState("left", false)
-    }
-
-    if (getRandomBoolean()) {
-      this.bot.setControlState("right", true)
-      await sleep(randomInt(10, maxMotionDelay))
-      this.bot.setControlState("right", false)
-    }
-
-    this.bot.look(randomInt(-180, 180), randomInt(-360, 360));
-
-    await sleep(100);
-    this.movementLoop()
   }
 
   async advertisementLoop() {
