@@ -104,7 +104,7 @@ class bot {
       const ansi = msg.toAnsi();
       msg = msg.toString();
 
-      if (this.botOptions.sendChatMessagesInConsole && !loggingMsgs) {
+      if (this.config.sendChatMessagesInConsole && !loggingMsgs) {
         console.log(ansi);
         loggingMsgs = true;
       }

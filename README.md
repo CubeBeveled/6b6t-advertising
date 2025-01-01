@@ -27,6 +27,9 @@ node index.js
 
 *NOTE: console is also known as command prompt, if you are on windows*
 # Configuration
+### sendChatMessagesInConsole
+If a bot should send chat messages in console
+
 ## advertising
 ### usernameBlacklist
 Usernames in this list wont receive your advertisements
@@ -80,7 +83,4 @@ After how much time should the bot reconnect (in seconds).
 The render distance of the bot. Input options for this value can be read [here](https://github.com/PrismarineJS/mineflayer/blob/master/docs/api.md#botsettingsviewdistance).
 
 *For developers* heres the [Mineflayer API documentation](https://github.com/PrismarineJS/mineflayer/blob/master/docs/api.md)
-
-### sendChatMessagesInConsole
-If a bot should send server messages in console
 ___

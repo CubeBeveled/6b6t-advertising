@@ -1,4 +1,5 @@
 {
+  "sendChatMessagesInConsole": false,
   "advertising": {
     "usernameBlacklist": [
       "omgni"
@@ -25,8 +26,7 @@
       "username": "yo bot username",
       "password": "yo bot password",
       "reconnectDelay": 5500,
-      "viewDistance": "tiny",
-      "sendChatMessagesInConsole": false
+      "viewDistance": "tiny"
     }
   ]
 }
