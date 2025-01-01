@@ -26,7 +26,7 @@ node index.js
 6. Profit
 
 *NOTE: console is also known as command prompt, if you are on windows*
-# Configuration
+# Settings
 ### sendChatMessagesInConsole
 If a bot should send chat messages in console
 
