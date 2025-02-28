@@ -80,10 +80,12 @@ class bot {
 
       if (this.spawned == 1) {
         this.bot.setControlState("forward", true);
+        this.bot.setControlState("jump", true);
       }
 
       if (this.spawned == 2) {
         this.bot.setControlState("forward", false);
+        this.bot.setControlState("jump", false);
 
         if (!sentPlayercount) {
           const players = Object.values(this.bot.players)
