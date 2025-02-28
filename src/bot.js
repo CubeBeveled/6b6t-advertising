@@ -1,6 +1,8 @@
 const mineflayer = require("mineflayer");
-const color = require("colors");
 const { randomInt } = require("crypto");
+const color = require("colors");
+const vec3 = require("vec3");
+const { pathfinder, Movements, goals: { GoalBlock } } = require("mineflayer-pathfinder");
 
 const sleep = (toMs) => {
   return new Promise((r) => {
@@ -49,6 +51,8 @@ class bot {
     this.spawned = 0;
 
     this.currentState = state.offline;
+
+    this.bot.loadPlugin(pathfinder);
   }
 
   registerEvents() {
@@ -72,19 +76,25 @@ class bot {
       this.currentState = state.dead;
     });
 
-    this.bot.on("spawn", () => {
+    this.bot.on("spawn", async () => {
       this.spawned++
       this.currentState = state.online;
 
       console.log(color.green(`[${this.botOptions.username}] spawned (${this.spawned})`));
 
       if (this.spawned == 1) {
-        this.bot.setControlState("forward", true);
-        this.bot.setControlState("jump", true);
+        await sleep(1000);
+        
+        this.bot.pathfinder.setMovements(new Movements(this.bot))
+        const goal = new GoalBlock(-1000, 100, -989);
+        this.bot.pathfinder.setGoal(goal);
+
+        this.bot.on("goal_reached", (reachedGoal) => {
+          if (reachedGoal == goal || reachedGoal instanceof goal) this.bot.setControlState("forward", true)
+        });
       }
 
       if (this.spawned == 2) {
-        this.bot.setControlState("forward", false);
         this.bot.setControlState("jump", false);
 
         if (!sentPlayercount) {
